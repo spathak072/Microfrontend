@@ -29,6 +29,9 @@ module.exports = {
       exposes: {
         './CartShow': './src/index',
       },
+       shared:[
+        '@faker-js/faker'
+      ]
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',
