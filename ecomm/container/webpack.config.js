@@ -28,7 +28,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name:"container",
       remotes:{
-        mfProducts:"mfProducts@http://localhost:8081/remoteEntry.js"
+        mfProducts:"mfProducts@http://localhost:8081/remoteEntry.js",
+        mfCart:"mfCart@http://localhost:8082/remoteEntry.js",
       }
     })
   ],

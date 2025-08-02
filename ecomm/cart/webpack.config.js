@@ -1,14 +1,13 @@
-
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const {ModuleFederationPlugin} = require("webpack").container;
-module.exports={
-mode:"development",
- entry: './src/index.ts',
+const { ModuleFederationPlugin } = require('webpack').container;
+module.exports = {
+
+  entry: './src/index.ts',
   output: {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    clean: true
+    clean: true,
   },
   resolve: {
     extensions: ['.ts', '.js'],
@@ -18,25 +17,27 @@ mode:"development",
       {
         test: /\.ts$/,
         use: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
-    devServer: {
-    static: './dist',
-    port: 8082,
-    open: true
-  },
-plugins:[
+ 
+  plugins: [
     new ModuleFederationPlugin({
-        name:'cart',
-        filename:'remoteEntry.js',
-        exposes:{
-            './CartShow':'./src/index'
-        }
+      name: 'mfCart',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './CartShow': './src/index',
+      },
     }),
     new HtmlWebpackPlugin({
-        template:'./public/index.html'
-    })
-]
-}
+      template: './public/index.html',
+    }),
+  ],
+   devServer: {
+    static: './dist',
+    port: 8082,
+    open: true,
+  },
+    mode: 'development',
+};
