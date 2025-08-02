@@ -6,6 +6,7 @@ for (let i = 0; i < 5; i++) {
     products += `<div>${name}</div>` 
     
 }
+console.log("Products")
 
 const devProductsEl = document.querySelector('#dev-products');
 if (devProductsEl) {

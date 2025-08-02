@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const {ModuleFederationPlugin} = require("webpack").container;
 
 module.exports = {
   entry: './src/index.ts',
@@ -24,6 +25,12 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: './public/index.html',
     }),
+    new ModuleFederationPlugin({
+      name:"container",
+      remotes:{
+        mfProducts:"mfProducts@http://localhost:8081/remoteEntry.js"
+      }
+    })
   ],
   devServer: {
     static: './dist',
