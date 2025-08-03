@@ -27,11 +27,13 @@ module.exports = {
       name: 'mfCart',
       filename: 'remoteEntry.js',
       exposes: {
-        './CartShow': './src/index',
+        './CartShow': './src/bootstrap',
       },
-       shared:[
-        '@faker-js/faker'
-      ]
+     shared:{
+        '@faker-js/faker':{
+          singleton: true
+        }
+      }
     }),
     new HtmlWebpackPlugin({
       template: './public/index.html',

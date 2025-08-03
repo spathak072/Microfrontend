@@ -1,7 +1,3 @@
-declare module 'mfProducts/ProductIndex' {
-  export * from 'mfProducts/ProductIndex';
-}
+declare module 'mfProducts/ProductIndex' 
 
-declare module 'mfCart/CartShow' {
-  export * from 'mfCart/CartShow';
-}
+declare module 'mfCart/CartShow' 

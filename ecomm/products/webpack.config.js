@@ -28,11 +28,13 @@ module.exports={
       name:'mfProducts',
       filename:'remoteEntry.js',
       exposes:{
-        './ProductIndex':"./src/index"
+        './ProductIndex':"./src/bootstrap"
       },
-      shared:[
-        '@faker-js/faker'
-      ]
+      shared:{
+        '@faker-js/faker':{
+          singleton: true
+        }
+      }
     })
   ],
   devServer: {
