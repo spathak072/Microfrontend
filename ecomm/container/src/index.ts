@@ -1,1 +1,1 @@
-console.log("Container")
+import("./bootstrap") // Load file asynchronously
