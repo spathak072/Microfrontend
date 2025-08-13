@@ -17,7 +17,8 @@ const devConfig ={
             name:"container",
             remotes:{
                 marketing: "mfMarketing@http://localhost:8081/remoteEntry.js"
-            }
+            },
+            shared:['react','react-dom'],
         }),
         new HTMLWebpackPlugin({
             template: './public/index.html',
