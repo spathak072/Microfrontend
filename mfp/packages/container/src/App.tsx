@@ -1,10 +1,14 @@
 import React from "react";
-// @ts-ignore
-import {mount} from "marketing/Marketing"
+import MarketingApp from "./Components/MarketingApp";
+
+
 
 const App=()=>{
-    console.log(mount)
-    return <div>Hi There</div>
+
+    return <><h1>Hi There</h1>
+    <hr/>
+        <MarketingApp/>
+    </>
 }
 
 export default App;
