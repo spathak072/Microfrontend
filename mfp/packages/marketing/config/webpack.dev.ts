@@ -2,6 +2,7 @@ const {merge} = require('webpack-merge');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const {ModuleFederationPlugin} = require("webpack").container;
 const commonConfig = require('./webpack.common');
+const {dependencies} = require("../package.json")
 
 const devConfig ={
     mode: 'development',
@@ -19,7 +20,7 @@ const devConfig ={
             exposes:{
                 './Marketing':'./src/bootstrap'
             },
-            shared:['react','react-dom'],
+            shared:dependencies,
         }),
         new HTMLWebpackPlugin({
             template: './public/index.html',
