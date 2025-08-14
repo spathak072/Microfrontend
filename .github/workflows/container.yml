@@ -4,10 +4,10 @@ on:
     branches:
       - main
     paths:
-      - 'packages/container/**'
+      - 'mfp/packages/container/**'
 defaults:
   run:
-    working-directory: packages/container
+    working-directory: mfp/packages/container
 
 jobs:
   build:
