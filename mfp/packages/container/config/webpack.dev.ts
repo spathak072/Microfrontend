@@ -1,8 +1,8 @@
 // @ts-ignore
 const {merge} = require('webpack-merge');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+
 // @ts-ignore
-const {ModuleFederationPlugin} = require("webpack").container;
+const {ModuleFederationPlugin} = require('webpack').container;
 // @ts-ignore
 const commonConfig = require('./webpack.common');
 // @ts-ignore
@@ -12,23 +12,20 @@ const devConfig ={
     mode: 'development',
     devServer: {
         hot: true,
-        port: 8081,
+        port: 8080,
         historyApiFallback: {
             index: 'index.html',
         },
     },
     plugins: [
         new ModuleFederationPlugin({
-            name: 'mfMarketing',
-            filename: 'remoteEntry.js',
-            exposes:{
-                './Marketing':'./src/bootstrap'
+            name:"container",
+            remotes:{
+                marketing: "mfMarketing@http://localhost:8081/remoteEntry.js"
             },
-            shared:dependencies,
+            shared: dependencies,
         }),
-        new HTMLWebpackPlugin({
-            template: './public/index.html',
-        })
+
     ]
 }
 
