@@ -1,3 +1,4 @@
+const HTMLWebpackPlugin = require('html-webpack-plugin');
 module.exports={
     module:{
         rules:[
@@ -24,4 +25,9 @@ module.exports={
     resolve: {
         extensions: ['.ts', '.js', '.tsx'],
     },
+    plugins: [
+        new HTMLWebpackPlugin({
+            template: './public/index.html',
+        })
+    ]
 }

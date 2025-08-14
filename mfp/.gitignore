@@ -3,3 +3,5 @@
 /packages/dashboard/node_modules/
 /packages/container/node_modules/
 /packages/auth/node_modules/
+/packages/container/dist/
+/packages/marketing/dist/
