@@ -4,8 +4,8 @@ import MarketingApp from "./Components/MarketingApp";
 
 
 const App=()=>{
-
-    return <><h1>Hi There Hello World</h1>
+console.log("App is rendering");
+    return <><h1>Hi There</h1>
     <hr/>
         <MarketingApp/>
     </>
