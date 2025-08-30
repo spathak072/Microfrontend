@@ -14,6 +14,14 @@ const mount = (el: ReactDOM.Container | null, navigation?: INavigation) => {
         history.listen(navigation.onNavigate);
     }
     ReactDOM.render(<App history={history} />, el);
+
+    return {
+        onParentNavigation({pathname:nextPathname}: Location) {
+            const {pathname} =history.location;
+            if(pathname !== nextPathname) history.push(nextPathname);
+            console.log("Capture navigation from Parent", nextPathname);
+        }
+    }
 };
 if(process.env.NODE_ENV === "development"){
     const devRoot = document.getElementById("_marketing-dev-root");
