@@ -3,10 +3,17 @@ import ReactDOM from "react-dom";
 import {createMemoryHistory} from "history"
 import App from "./App";
 
-const mount=(el: ReactDOM.Container | null)=>{
-    const history = createMemoryHistory();
+interface INavigation {
+    onNavigate:()=>void;
+}
 
-    ReactDOM.render(<App history={history}/>,el);
+
+const mount = (el: ReactDOM.Container | null, navigation?: INavigation) => {
+    const history = createMemoryHistory();
+    if (navigation?.onNavigate) {
+        history.listen(navigation.onNavigate);
+    }
+    ReactDOM.render(<App history={history} />, el);
 };
 if(process.env.NODE_ENV === "development"){
     const devRoot = document.getElementById("_marketing-dev-root");
@@ -14,4 +21,4 @@ if(process.env.NODE_ENV === "development"){
         mount(devRoot);
     }
 }
-export { mount}
+export { mount};
