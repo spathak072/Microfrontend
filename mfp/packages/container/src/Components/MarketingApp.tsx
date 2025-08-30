@@ -1,12 +1,17 @@
 // @ts-ignore
 import {mount} from "marketing/Marketing"
 import React, {useRef, useEffect} from 'react'
+import {useHistory} from "react-router-dom";
+
 
 const MarketingApp = () => {
+    const history = useHistory();
 const ref = useRef(null);
     useEffect(() => {
         mount(ref.current,{
-            onNavigate:()=>{
+            onNavigate:(location:Location)=>{
+                if(history.location.pathname !== location.pathname  ) history.push(location.pathname);
+                console.log(location.pathname);
                 console.log("Container notice navigation in Marketing App.")
             }
         })

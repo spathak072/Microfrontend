@@ -4,7 +4,7 @@ import {createMemoryHistory} from "history"
 import App from "./App";
 
 interface INavigation {
-    onNavigate:()=>void;
+    onNavigate:(location:unknown)=>void;
 }
 
 
