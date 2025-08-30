@@ -1,15 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {createMemoryHistory} from "history"
+import {createMemoryHistory, createBrowserHistory} from "history"
 import App from "./App";
 
 interface INavigation {
-    onNavigate:(location:unknown)=>void;
+    onNavigate?:(location:unknown)=>void;
+    defaultHistory: ReturnType<typeof createMemoryHistory | typeof createBrowserHistory>;
 }
 
 
 const mount = (el: ReactDOM.Container | null, navigation?: INavigation) => {
-    const history = createMemoryHistory();
+    const history = navigation?.defaultHistory || createMemoryHistory();
     if (navigation?.onNavigate) {
         history.listen(navigation.onNavigate);
     }
@@ -26,7 +27,9 @@ const mount = (el: ReactDOM.Container | null, navigation?: INavigation) => {
 if(process.env.NODE_ENV === "development"){
     const devRoot = document.getElementById("_marketing-dev-root");
     if(devRoot){
-        mount(devRoot);
+        mount(devRoot, {
+            defaultHistory: createBrowserHistory(),
+        });
     }
 }
 export { mount};
