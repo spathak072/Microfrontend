@@ -10,6 +10,10 @@ const {dependencies} = require("../package.json")
 
 const devConfig ={
     mode: 'development',
+    output:{
+        filename: "[name].[contenthash].js",
+        publicPath:"http://localhost:8081/",
+    },
     devServer: {
         hot: true,
         port: 8081,
