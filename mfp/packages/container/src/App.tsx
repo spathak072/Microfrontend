@@ -1,14 +1,25 @@
 import React from "react";
-import {BrowserRouter, Link} from 'react-router-dom'
+import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
 import MarketingApp from "./Components/MarketingApp";
+import AuthApp from "./Components/AuthApp";
+import './index.css'
 
 
 
 const App=()=>{
 console.log("App is rendering");
-    return <BrowserRouter><Link to={"/"}>App</Link>
+    return <BrowserRouter>
+        <header className="App-header">
+            <Link to={"/"}>App</Link>
+            <Link to={"/auth/signin"}>Login</Link>
+        </header>
+
     <hr/>
-        <MarketingApp/>
+
+        <Switch>
+            <Route  path="/auth" component={AuthApp}/>
+            <Route path="/" component={MarketingApp}/>
+        </Switch>
     </BrowserRouter>
 }
 

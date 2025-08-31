@@ -19,11 +19,16 @@ module.exports={
                 use:{
                     loader: 'ts-loader',
                 }
-            }
+            },
+            {
+                test: /\.css$/i,
+                exclude: /node_modules/,
+                use: ["style-loader", "css-loader"],
+            },
         ]
     },
     resolve: {
-        extensions: ['.ts', '.js', '.tsx'],
+        extensions: ['.ts', '.js', '.tsx','.css'],
     },
     plugins: [
         new HTMLWebpackPlugin({
