@@ -13,7 +13,8 @@ const ref = useRef(null);
                 if(history.location.pathname !== location.pathname  ) history.push(location.pathname);
                 console.log(location.pathname);
                 console.log("Container notice navigation in Marketing App.")
-            }
+            },
+            initialPath: history.location.pathname,
         })
         history.listen(onParentNavigation)
     }, []);

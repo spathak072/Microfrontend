@@ -6,14 +6,18 @@ import App from "./App";
 interface INavigation {
     onNavigate?:(location:unknown)=>void;
     defaultHistory: ReturnType<typeof createMemoryHistory | typeof createBrowserHistory>;
+    initialPath?: string;
 }
 
 
 const mount = (el: ReactDOM.Container | null, navigation?: INavigation) => {
-    const history = navigation?.defaultHistory || createMemoryHistory();
+    const history = navigation?.defaultHistory || createMemoryHistory({
+        initialEntries:[navigation?.initialPath || "/"]
+    });
     if (navigation?.onNavigate) {
         history.listen(navigation.onNavigate);
     }
+
     ReactDOM.render(<App history={history} />, el);
 
     return {
