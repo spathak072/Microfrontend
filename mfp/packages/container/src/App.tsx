@@ -1,10 +1,9 @@
-import React from "react";
+import React, {lazy, Suspense} from "react";
 import {BrowserRouter, Link, Route, Switch} from 'react-router-dom'
-import MarketingApp from "./Components/MarketingApp";
-import AuthApp from "./Components/AuthApp";
 import './index.css'
 
-
+const MarketingAppLazy = lazy(()=>import("./Components/MarketingApp"));
+const AuthAppLazy = lazy(()=>import("./Components/AuthApp"));
 
 const App=()=>{
 console.log("App is rendering");
@@ -15,11 +14,12 @@ console.log("App is rendering");
         </header>
 
     <hr/>
-
+<Suspense fallback={<div>Loading...</div>}>
         <Switch>
-            <Route  path="/auth" component={AuthApp}/>
-            <Route path="/" component={MarketingApp}/>
+            <Route  path="/auth" component={AuthAppLazy}/>
+            <Route path="/" component={MarketingAppLazy}/>
         </Switch>
+</Suspense>
     </BrowserRouter>
 }
 
